@@ -1,6 +1,6 @@
-export const SITE_FAVICON = "/favicon.png";
-export const SITE_LOGO = "/avatar.png";
-export const SITE_TITLE = "Mia";
+export const SITE_FAVICON = "/avatar.jpg";
+export const SITE_LOGO = "/avatar.jpg";
+export const SITE_TITLE = "Bekzod Jon ";
 export const SITE_DESCRIPTION =
   "Mia is designed to be minimalist yet powerful, integrating the capabilities of Astro, MDX, and Rough Notation. Whether you're a developer, writer, or just someone who loves clean and efficient design, this theme is perfect for you.";
 
@@ -21,12 +21,22 @@ export const MENUS = [
     target: "_self",
   },
   {
+    title: "About Me",
+    link: "/about",
+    target: "_self",
+  },
+  {
     title: "GitHub",
-    link: "https://github.com/infinity-ooo/astro-theme-mia",
+    link: "https://github.com/bekzodnj",
+    target: "_blank",
+  },
+  {
+    title: "Twitter / X",
+    link: "https://x.com/bekzodnj",
     target: "_blank",
   },
 ];
 
-export const FOOTER_CONTENT = "Let's build a 1B unicorn 🦄";
+export const FOOTER_CONTENT = "Let's build  🚀";
 
 export const GOOGLE_GTAG = "G-XXXXXXXXXX";
