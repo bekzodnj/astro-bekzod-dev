@@ -1,0 +1,56 @@
+---
+title: "How to pass ref as a prop in React"
+description: "How to pass and forward refs as props in React using TypeScript, with practical examples."
+date: "2024/12/07"
+tags: ["react", "typescript", "web"]
+cover: "https://images.unsplash.com/photo-1579762593175-20226054cad0"
+---
+
+# How to use forwardRef in Typescript
+
+Starting in [React 19](https://react.dev/blog/2024/12/05/react-19#ref-as-a-prop), passing ref as a prop for function components is available. That means now we can pass components ref like any other prop and no more forwardRef! 
+
+Let's see how we can simplify [forwardRef example](/posts/how-to-use-forwardRef-typescript) with this update.
+
+## Code
+We want to access input field's DOM node and focus it. But we want to acheive using another Button component (in App.tsx). We create a `ref` and simply pass to the child like any other prop.
+```tsx
+// App.tsx
+import { ButtonComponent } from './ButtonComponent'
+import { useRef } from 'react'
+
+export function App() {
+  const ref = useRef<HTMLInputElement>(null)
+  return (
+    <div className="App">
+      <p>Click to the button to focus on the input</p>
+      <ButtonComponent title="Click here to focus the input" ref={ref} />
+      <input placeholder="Click the button to focus here" ref={ref} />
+    </div>
+  )
+}
+```
+
+And we can access the ref as prop inside the child component.
+
+```tsx
+// ButtonComponent.tsx
+type PropsType = {
+  title: string;
+  ref: RefObject<HTMLInputElement>;
+};
+
+export const ButtonComponent = ({ title, ref }: PropsType) => {
+  const onClickHandler = () => {
+    ref.current?.focus();
+  };
+
+  return <button onClick={onClickHandler}>{title}</button>;
+};
+```
+
+
+
+## Demo
+
+[View on CodeSandbox](https://codesandbox.io/p/sandbox/forwardref-in-typescript-forked-2tgfqd)

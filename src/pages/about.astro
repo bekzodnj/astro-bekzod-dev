@@ -1,0 +1,29 @@
+---
+import Layout from "../components/layout.astro";
+import PostListing from "../components/post/post-list.astro";
+---
+
+<Layout>
+  {/* Header / Intro */}
+  <div class="mx-auto flex w-full max-w-5xl flex-col gap-12 px-4 py-16 sm:px-8">
+    <div class="mx-auto flex max-w-prose flex-col items-center gap-6 text-center">
+      <h1 id="header" class="font-title text-4xl font-black tracking-tight sm:text-5xl">About Bekzodjon</h1>
+
+      <p class="text-lg leading-relaxed text-zinc-600">127.0.0.1</p>
+    </div>
+  </div>
+
+  {/* Content */}
+  <div class="mx-auto flex max-w-screen-md flex-col gap-6 px-4 pb-20 text-base leading-relaxed text-zinc-700 sm:px-6">
+    <p>
+      Hey, I’m Bekzodjon — a Full-Stack Software Developer at Ericsson in Hungary. I mostly work with React and Node,
+      and I enjoy solving real problems through software development.
+    </p>
+    <p>On the backend side, I’ve worked on projects using Go (Echo), Python with FastAPI, and Java with Spring Boot.</p>
+
+    <p>
+      I’m comfortable working across the stack and try to stay up to date with modern tooling. Lately, I’ve been
+      spending more time with TypeScript and diving deeper into Golang, SQLite, and Streams.
+    </p>
+  </div>
+</Layout>

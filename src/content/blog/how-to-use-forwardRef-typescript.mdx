@@ -1,0 +1,74 @@
+---
+title: "How to use forwardRef in Typescript"
+description: "How to use forwardRef in React, TypeScript."
+date: "2023/1/31"
+tags: ["react", "typescript", "web"]
+cover: "https://images.unsplash.com/photo-1579762593175-20226054cad0"
+---
+
+
+# How to use forwardRef in Typescript
+
+> Update: Starting in [React 19](https://react.dev/blog/2024/12/05/react-19#ref-as-a-prop), passing ref as a prop for function components is available. See [updated tutorial](/posts/how-to-pass-ref-as-a-prop-react-typescript).
+
+Sometimes we need to pass a ref to another component as a prop (e.g., to access DOM node of a component from a parent component). In these situations, we can use forwardRef because the ref prop is handled differently than normal props. Let's see its usage in TypeScript.
+
+To illustrate this concept, let's create a simple app with an input field and a button. The button will be a separate component, and when clicked, the input field should be focused using its ref. Basically, we control input field's DOM node from the button component.
+
+## Code
+
+Inside `App.tsx`: we add an input and a button component. The ref is created using `useRef` hook and we can specify the type of the ref. In this case, it is an `HTMLInputElement`.
+The button component will be a separate component and we will pass the ref to it.
+
+```tsx
+// App.tsx
+import { ButtonComponent } from './ButtonComponent'
+
+import { useRef } from 'react'
+
+export default function App() {
+  const ref = useRef<HTMLInputElement>(null)
+
+  return (
+    <div className="App">
+      <h2>forwardRef example with TypeScript</h2>
+      <p>Click to the button to focus on the input</p>
+      <ButtonComponent title="Click here to focus the input" ref={ref} />
+      <br />
+      <input placeholder="Click the button to focus here" ref={ref} />
+    </div>
+  )
+}
+```
+
+Code for `ButtonComponent.tsx`: we use `forwardRef` to pass the ref to the button component. The first argument is the type of the ref (HTMLInputElement) and the second argument is the type of the props (PropsType). In this case, the ref is an `HTMLInputElement` and the props are `title` which is a string.
+
+```tsx
+// ButtonComponent.tsx
+import { forwardRef, RefObject } from 'react'
+
+type PropsType = {
+  title?: string
+}
+
+const ButtonComponent = forwardRef<HTMLInputElement, PropsType>(
+  ({ title }, ref) => {
+    const onClickHandler = () => {
+      const inputRef = ref as RefObject<HTMLInputElement>
+      inputRef.current?.focus()
+    }
+
+    return <button onClick={onClickHandler}>{title}</button>
+  }
+)
+
+export { ButtonComponent }
+```
+
+The reason why we need to cast the ref to RefObject inside onClick() is that there are two different kinds of refs. One is an object with a `current` property and the another is a ref callback (for advanced use cases). So, we need to cast it to `RefObject` to access the `current` property. For more information check [this Stackoverflow answer](https://stackoverflow.com/questions/65876809/property-current-does-not-exist-on-type-instance-htmldivelement-null).
+
+## Demo
+
+[View on CodeSandbox](https://codesandbox.io/s/forwardref-in-typescript-88iozt?file=/src/ButtonComponent.tsx)
+
+
