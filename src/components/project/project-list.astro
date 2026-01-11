@@ -1,0 +1,45 @@
+---
+interface Project {
+  title: string;
+  description: string;
+  link: string;
+}
+
+export interface Props {
+  projects: Project[];
+}
+
+const { projects } = Astro.props;
+---
+
+<div class="project-list">
+  {
+    projects.map((project) => (
+      <a href={project.link} class="project-card">
+        <h2>{project.title}</h2>
+        <p>{project.description}</p>
+      </a>
+    ))
+  }
+</div>
+
+<style>
+  .project-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+
+  .project-card {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .project-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+</style>

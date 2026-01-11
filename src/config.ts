@@ -2,7 +2,7 @@ export const SITE_FAVICON = "/avatar.jpg";
 export const SITE_LOGO = "/avatar.jpg";
 export const SITE_TITLE = "Bekzod Jon ";
 export const SITE_DESCRIPTION =
-  "Mia is designed to be minimalist yet powerful, integrating the capabilities of Astro, MDX, and Rough Notation. Whether you're a developer, writer, or just someone who loves clean and efficient design, this theme is perfect for you.";
+  "Bekzodjon Norkuziev's personal blog about web development, programming, and technology.";
 
 export const MENUS = [
   {
@@ -11,32 +11,37 @@ export const MENUS = [
     target: "_self",
   },
   {
+    title: "Projects",
+    link: "/projects",
+    target: "_self",
+  },
+  {
     title: "Tags",
     link: "/tags",
     target: "_self",
   },
-  {
-    title: "Archive",
-    link: "/date",
-    target: "_self",
-  },
+  // {
+  //   title: "Archive",
+  //   link: "/date",
+  //   target: "_self",
+  // },
   {
     title: "About Me",
     link: "/about",
     target: "_self",
   },
   {
-    title: "GitHub",
+    title: "GitHub ↗",
     link: "https://github.com/bekzodnj",
     target: "_blank",
   },
   {
-    title: "Twitter / X",
+    title: "Twitter / X ↗",
     link: "https://x.com/bekzodnj",
     target: "_blank",
   },
 ];
 
-export const FOOTER_CONTENT = "Let's build  🚀";
+export const FOOTER_CONTENT = "build  🚀";
 
 export const GOOGLE_GTAG = "G-XXXXXXXXXX";
