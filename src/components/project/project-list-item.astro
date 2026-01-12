@@ -1,4 +1,9 @@
 ---
+import { Image } from "astro:assets";
+import maveran_garden_IMG from "../../images/maveran_garden.png";
+import react_hooks_IMG from "../../images/react-hooks.png";
+import go2img_IMG from "../../images/go2img.png";
+
 type Project = {
   title: string;
   description: string;
@@ -18,11 +23,18 @@ const { project } = Astro.props;
   {
     project.cover && (
       <a href={project.link} target="_self">
-        <img
+        <Image
+          src={react_hooks_IMG}
+          alt="cover"
+          class="w-full aspect-video rounded-lg self-auto object-cover"
+          widths={[400, 800, 1200]}
+          sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px"
+        />
+        {/* <img
           src={`${project.cover}?w=800&q=80`}
           alt="cover"
           class="w-full aspect-video rounded-lg self-auto object-cover"
-        />
+        /> */}
       </a>
     )
   }

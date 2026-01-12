@@ -1,4 +1,3 @@
-export const SITE_FAVICON = "/avatar.jpg";
 export const SITE_LOGO = "/avatar.jpg";
 export const SITE_TITLE = "Bekzod Jon ";
 export const SITE_DESCRIPTION =
