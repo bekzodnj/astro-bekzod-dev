@@ -1,21 +1,16 @@
 ---
 import Layout from "../components/layout.astro";
 import ProjectListItem from "../components/project/project-list-item.astro";
+import { project_thumbnails } from "../helpers/image-util.ts";
 
 const projects = [
-  {
-    title: "Interactive Guide to React Hooks",
-    description: "Interactive learning guide for popular React Hooks ↗",
-    link: "https://reacthooksapp.vercel.app/",
-    cover: "https://images.unsplash.com/photo-1599779868774-063b33f9a78d?q=80&w=800",
-    tags: ["React", "Next", "Hooks"],
-  },
   {
     title: "Go2Img - Image labelling tool",
     description: "A tool for image labelling and annotation using Konva.js ↗",
     link: "https://go2img.bekzod.net",
     cover: "https://images.unsplash.com/photo-1579762593175-20226054cad0",
     tags: ["Canvas", "Prisma", "React Router"],
+    thumbnail: project_thumbnails["../images/goimg_screen.png"]?.default,
   },
   {
     title: "Maveran Garden",
@@ -23,8 +18,19 @@ const projects = [
     link: "https://mgarden-web.pages.dev",
     cover: "https://images.unsplash.com/photo-1579762593175-20226054cad0",
     tags: ["Astro", "zenblog"],
+    thumbnail: project_thumbnails["../images/mgarden_screen.png"]?.default,
+  },
+  {
+    title: "Interactive Guide to React Hooks",
+    description: "Interactive learning guide for popular React Hooks ↗",
+    link: "https://reacthooksapp.vercel.app/",
+    cover: "https://images.unsplash.com/photo-1599779868774-063b33f9a78d?q=80&w=800",
+    tags: ["React", "Next", "Hooks"],
+    thumbnail: project_thumbnails["../images/react_hooks_screen.png"]?.default,
   },
 ];
+
+console.log(project_thumbnails);
 ---
 
 <Layout>

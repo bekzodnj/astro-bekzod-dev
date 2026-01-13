@@ -1,8 +1,9 @@
 ---
+import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
-import maveran_garden_IMG from "../../images/maveran_garden.png";
-import react_hooks_IMG from "../../images/react-hooks.png";
-import go2img_IMG from "../../images/go2img.png";
+// import maveran_garden_IMG from "../../images/maveran_garden.png";
+// import react_hooks_IMG from "../../images/react-hooks.png";
+// import go2img_IMG from "../../images/go2img.png";
 
 type Project = {
   title: string;
@@ -10,6 +11,7 @@ type Project = {
   link: string;
   cover?: string;
   tags?: string[];
+  thumbnail: ImageMetadata;
 };
 
 type Props = {
@@ -24,17 +26,14 @@ const { project } = Astro.props;
     project.cover && (
       <a href={project.link} target="_self">
         <Image
-          src={react_hooks_IMG}
+          src={project.thumbnail}
           alt="cover"
           class="w-full aspect-video rounded-lg self-auto object-cover"
           widths={[400, 800, 1200]}
           sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px"
+          width={1200}
+          height={675}
         />
-        {/* <img
-          src={`${project.cover}?w=800&q=80`}
-          alt="cover"
-          class="w-full aspect-video rounded-lg self-auto object-cover"
-        /> */}
       </a>
     )
   }
